@@ -1,7 +1,3 @@
-/*
-Perfect Shuffle
-*/
-
 import java.util.Random;
 
 public class EighteenTwo {
@@ -33,13 +29,24 @@ public class EighteenTwo {
         return result;
     }
 
+    public int[] perfectShuffleLoop(int[] cards) {
+        for (int i = 0; i < cards.length; i++) {
+            int randomIndex = getRandomNumber(0, i);
+            int temp = cards[randomIndex];
+            cards[randomIndex] = cards[i];
+            cards[i] = temp;
+        }
+        return cards;
+    }
+
     public static void main(String[] args) {
         EighteenTwo obj = new EighteenTwo();
         int[] cards = new int[52];
         for (int i = 1; i <= 52; i++) {
             cards[i - 1] = i;
         }
-        cards = obj.perfectShuffle(cards);
+        //cards = obj.perfectShuffle(cards);
+        cards = obj.perfectShuffleLoop(cards);
         for (int i : cards) {
             System.out.print(i + "  ");
         }
